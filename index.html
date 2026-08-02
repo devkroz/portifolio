@@ -3,483 +3,276 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kroz — Portfólio</title>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      background: #0a0a0f;
-      color: #e4e4e7;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-    ::selection { background: #ef4444; color: #fff; }
-
-    /* navbar */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(10,10,15,0.85); backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 1rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    nav .logo { font-size: 1.25rem; font-weight: 700; color: #ef4444; letter-spacing: -0.02em; }
-    nav .links { display: flex; gap: 1.5rem; align-items: center; }
-    nav .links a { color: #a1a1aa; text-decoration: none; font-size: 0.875rem; transition: color .2s; }
-    nav .links a:hover { color: #fff; }
-    nav .social-links { display: flex; gap: 0.75rem; margin-left: 1rem; padding-left: 1rem; border-left: 1px solid #27272a; }
-    nav .social-links a { color: #a1a1aa; font-size: 1.125rem; transition: color .2s; text-decoration: none; }
-    nav .social-links a:hover { color: #ef4444; }
-
-    /* hero */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center;
-      padding: 2rem; position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(239,68,68,0.12) 0%, transparent 60%);
-      pointer-events: none;
-    }
-    .hero-avatar {
-      width: 120px; height: 120px; border-radius: 50%;
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem;
-      box-shadow: 0 0 40px rgba(239,68,68,0.3);
-    }
-    .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; letter-spacing: -0.03em; }
-    .hero h1 span { color: #ef4444; }
-    .hero .tagline {
-      color: #a1a1aa; font-size: 1.2rem; margin-top: 1rem; max-width: 36rem;
-      line-height: 1.7;
-    }
-    .hero-tech {
-      display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
-      margin-top: 2rem;
-    }
-    .hero-tech span {
-      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
-      color: #ef4444; padding: 0.4rem 1rem; border-radius: 9999px;
-      font-size: 0.8125rem; font-weight: 500;
-    }
-    .hero-stats {
-      display: flex; gap: 2.5rem; margin-top: 2.5rem; flex-wrap: wrap; justify-content: center;
-    }
-    .hero-stats .stat {
-      text-align: center;
-    }
-    .hero-stats .stat .num {
-      font-size: 1.75rem; font-weight: 700; color: #ef4444;
-    }
-    .hero-stats .stat .label {
-      font-size: 0.8125rem; color: #71717a; margin-top: 0.125rem;
-    }
-    .hero .cta { margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-    .hero .cta a {
-      padding: 0.85rem 2.5rem; border-radius: 9999px; text-decoration: none;
-      font-weight: 600; font-size: 0.9rem; transition: all .3s;
-    }
-    .btn-primary {
-      background: #ef4444; color: #fff;
-      box-shadow: 0 4px 20px rgba(239,68,68,0.3);
-    }
-    .btn-primary:hover { background: #dc2626; transform: translateY(-3px); box-shadow: 0 6px 30px rgba(239,68,68,0.4); }
-    .btn-outline { border: 1px solid #27272a; color: #a1a1aa; }
-    .btn-outline:hover { border-color: #ef4444; color: #fff; transform: translateY(-2px); }
-
-    /* sections */
-    section { padding: 6rem 2rem; max-width: 72rem; margin: 0 auto; }
-    section h2 {
-      font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
-      display: inline-block;
-    }
-    section h2::after {
-      content: ''; display: block; width: 3rem; height: 3px;
-      background: #ef4444; margin-top: 0.5rem; border-radius: 2px;
-    }
-    .subtitle { color: #71717a; margin-bottom: 3rem; }
-
-    /* animations */
-    .fade-in {
-      opacity: 0; transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible { opacity: 1; transform: translateY(0); }
-    .fade-in-delay-1 { transition-delay: 0.1s; }
-    .fade-in-delay-2 { transition-delay: 0.2s; }
-    .fade-in-delay-3 { transition-delay: 0.3s; }
-    .fade-in-delay-4 { transition-delay: 0.4s; }
-
-    /* about */
-    .about-content {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
-    }
-    .about-text p { color: #a1a1aa; font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
-    .about-text strong { color: #e4e4e7; }
-    .about-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-    }
-    .about-item {
-      background: #14141a; border: 1px solid #27272a; border-radius: 0.75rem;
-      padding: 1.25rem; text-align: center;
-    }
-    .about-item .a-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .about-item h4 { font-size: 0.875rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .about-item p { font-size: 0.75rem; color: #71717a; }
-
-    /* projects */
-    .projects-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: #14141a; border: 1px solid #27272a; border-radius: 1rem;
-      overflow: hidden; transition: all .4s;
-    }
-    .project-card:hover { border-color: #ef4444; transform: translateY(-6px); box-shadow: 0 12px 40px rgba(239,68,68,0.08); }
-    .project-card .screenshot {
-      width: 100%; height: 180px; object-fit: cover;
-      background: linear-gradient(135deg, #1c1c24, #27272a);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 3rem; border-bottom: 1px solid #27272a;
-    }
-    .project-card .body { padding: 1.5rem; }
-    .project-card h3 { font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .project-card p { color: #a1a1aa; font-size: 0.875rem; margin-bottom: 1rem; line-height: 1.6; }
-    .project-card .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-    .project-card .tags span {
-      background: #1c1c24; color: #a1a1aa; padding: 0.25rem 0.75rem;
-      border-radius: 9999px; font-size: 0.75rem;
-    }
-    .project-card .linkss { display: flex; gap: 1rem; }
-    .project-card .linkss a {
-      color: #a1a1aa; text-decoration: none; font-size: 0.8125rem;
-      display: inline-flex; align-items: center; gap: 0.375rem; transition: all .2s;
-      padding: 0.375rem 0.75rem; border-radius: 0.5rem; background: #1c1c24;
-    }
-    .project-card .linkss a:hover { background: rgba(239,68,68,0.1); color: #ef4444; }
-
-    /* services */
-    .services-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .service-card {
-      background: #14141a; border: 1px solid #27272a; border-radius: 1rem;
-      padding: 2.5rem 1.5rem; text-align: center; transition: all .4s;
-    }
-    .service-card:hover { border-color: #ef4444; transform: translateY(-6px); box-shadow: 0 12px 40px rgba(239,68,68,0.08); }
-    .service-card .s-icon { font-size: 2.5rem; margin-bottom: 1rem; }
-    .service-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .service-card p { color: #a1a1aa; font-size: 0.8125rem; line-height: 1.6; }
-
-    /* contact */
-    .contact-links {
-      display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem;
-    }
-    .contact-card {
-      background: #14141a; border: 1px solid #27272a; border-radius: 1rem;
-      padding: 1.25rem 1.5rem; display: flex; align-items: center; gap: 0.75rem;
-      text-decoration: none; color: #e4e4e7; transition: all .3s; flex: 1; min-width: 200px;
-    }
-    .contact-card:hover { border-color: #ef4444; transform: translateY(-3px); }
-    .contact-card .c-icon { font-size: 1.5rem; }
-    .contact-card .c-body { line-height: 1.3; }
-    .contact-card .c-label { font-size: 0.75rem; color: #71717a; }
-
-    /* footer */
-    footer {
-      text-align: center; padding: 2.5rem; color: #52525b;
-      border-top: 1px solid #27272a; font-size: 0.8125rem;
-    }
-
-    /* gradient screenshots */
-    .sshot-agenda { background: linear-gradient(135deg, #1a0a0a, #2d0a0a, #0a0a1a) !important; }
-    .sshot-lobao { background: linear-gradient(135deg, #0a0a1a, #1a0a2a, #0a0a0a) !important; }
-    .sshot-ecommerce { background: linear-gradient(135deg, #0a1a0a, #0a0a1a, #1a1a0a) !important; }
-    .sshot-analytics { background: linear-gradient(135deg, #0a1a0a, #0a2a0a, #0a0a0a) !important; }
-    .sshot-ia { background: linear-gradient(135deg, #0a0a1a, #0a1a1a, #1a0a1a) !important; }
-    .sshot-game { background: linear-gradient(135deg, #1a0a0a, #1a0a1a, #0a0a1a) !important; }
-
-    @media (max-width: 768px) {
-      .about-content { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-stats { gap: 1.5rem; }
-      nav { padding: 1rem; }
-      nav .links { gap: 0.75rem; }
-      nav .social-links { margin-left: 0.5rem; padding-left: 0.5rem; }
-      section { padding: 4rem 1.25rem; }
-    }
-  </style>
+  <title>Kroz — Desenvolvedor Full Stack</title>
+  <meta name="description" content="Portfólio de Kroz, desenvolvedor Full Stack. Sistemas, APIs e bots." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 <body>
 
-  <nav>
-    <div class="logo">Kroz</div>
-    <div class="links">
-      <a href="#sobre">Sobre</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-      <div class="social-links">
-        <a href="https://github.com/devkroz" target="_blank" title="GitHub">🐙</a>
-        <a href="https://linkedin.com/in/charles-wagner-68549b424/" target="_blank" title="LinkedIn">🔗</a>
+  <!-- cursor glow -->
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- progress+blob -->
+  <div class="bg-art" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="grid-lines"></div>
+  </div>
+
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#home" class="logo">k<span>r</span>oz<span class="logo-dot">.</span></a>
+      <ul class="nav-links">
+        <li><a href="#sobre" class="nav-link">Sobre</a></li>
+        <li><a href="#stack" class="nav-link">Stack</a></li>
+        <li><a href="#projetos" class="nav-link">Projetos</a></li>
+        <li><a href="#servicos" class="nav-link">Serviços</a></li>
+        <li><a href="#contato" class="nav-link">Contato</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contato" class="btn btn-ghost">Vamos conversar</a>
       </div>
+      <button class="burger" id="burger" aria-label="menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 
-  <section class="hero" id="home">
-    <div class="hero-avatar">K</div>
-    <h1>K<span>r</span>oz</h1>
-    <p class="tagline">
-      Desenvolvedor Full Stack especializado em criar sistemas, APIs e bots<br>
-      para empresas e comunidades. Transformo ideias em produtos prontos para produção.
-    </p>
+  <!-- ======= HERO ======= -->
+  <header class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <div class="hero-badge"><span class="dot-live"></span> Disponível para projetos</div>
+        <h1 class="hero-title">
+          Olá, eu sou<br />
+          <span class="grad-text">Kroz Dev</span>
+        </h1>
+        <p class="hero-sub">
+          <span class="role">#</span>
+          <span id="typed" class="typed"></span><span class="cursor">|</span>
+        </p>
+        <p class="hero-desc">
+          Desenvolvedor <strong>Full Stack</strong> — crio sistemas, APIs e bots
+          que funcionam de verdade, com performance e design em primeiro lugar.
+        </p>
+        <div class="hero-actions">
+          <a href="#projetos" class="btn btn-primary">Ver projetos</a>
+          <a href="#contato" class="btn btn-outline">Contato</a>
+        </div>
+        <div class="hero-pills">
+          <span>React</span><span>TypeScript</span><span>Node.js</span><span>Fastify</span><span>Python</span>
+        </div>
+      </div>
 
-    <div class="hero-tech">
-      <span>React</span><span>Node.js</span><span>TypeScript</span><span>Fastify</span>
-      <span>PostgreSQL</span><span>Docker</span><span>Python</span><span>Prisma</span>
+      <!-- anime hero art -->
+      <div class="hero-art reveal" aria-hidden="true">
+        <div class="art-frame">
+          <div class="parallax" data-speed="0.15">
+            <div class="art-halo"></div>
+            <svg class="anime" viewBox="0 0 320 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hk" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ef4444"/><stop offset="1" stop-color="#f97316"/>
+                </linearGradient>
+                <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#f43f5e"/><stop offset="1" stop-color="#9f1239"/>
+                </linearGradient>
+              </defs>
+              <!-- head -->
+              <ellipse cx="160" cy="120" rx="62" ry="74" fill="#fcd7c8"/>
+              <!-- hair back -->
+              <path d="M100 140c-14-52 20-96 62-98 44-2 78 44 64 96-8 40-30 66-63 66-33 0-55-26-63-64Z" fill="url(#hair)"/>
+              <!-- fringe -->
+              <path d="M102 130c16-40 40-56 60-56 22 0 42 18 56 54-16-22-32-26-56-26-22 0-40 10-60 28Z" fill="url(#hair)"/>
+              <!-- eyes -->
+              <g>
+                <path d="M134 150c2-14 12-22 20-22s20 8 22 22" stroke="#1f0f0a" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="162" cy="150" r="4" fill="#ef4444"/>
+                <path d="M190 150c2-14 12-22 20-22s20 8 22 22" stroke="#1f0f0a" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <circle cx="218" cy="150" r="4" fill="#ef4444"/>
+              </g>
+              <!-- blush -->
+              <circle cx="128" cy="176" r="8" fill="#f43f5e" opacity="0.25"/>
+              <circle cx="224" cy="176" r="8" fill="#f43f5e" opacity="0.25"/>
+              <path d="M156 170 q4 5 8 0" stroke="#1f0f0a" stroke-width="4" stroke-linecap="round" fill="none"/>
+            </svg>
+            <!-- floating code chips -->
+            <span class="chip chip-1">&lt;/&gt;</span>
+            <span class="chip chip-2">{ }</span>
+            <span class="chip chip-3 font-mono">const dev = 'kroz'</span>
+          </div>
+        </div>
+        <div class="art-caption">— kroz, em modo dev</div>
+      </div>
     </div>
 
-    <div class="hero-stats">
-      <div class="stat"><div class="num">+6</div><div class="label">projetos desenvolvidos</div></div>
-      <div class="stat"><div class="num">+8</div><div class="label">tecnologias dominadas</div></div>
-      <div class="stat"><div class="num">100%</div><div class="label">responsivo</div></div>
-      <div class="stat"><div class="num">✅</div><div class="label">deploy automatizado</div></div>
-    </div>
+    <a href="#sobre" class="hero-scroll" aria-label="rolar">
+      <span class="mouse"><span class="wheel"></span></span>
+    </a>
+  </header>
 
-    <div class="cta">
-      <a href="#projetos" class="btn-primary">Ver Projetos</a>
-      <a href="#contato" class="btn-outline">Contato</a>
-    </div>
-  </section>
-
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p class="subtitle">Conheça um pouco da minha trajetória</p>
-    <div class="about-content">
-      <div class="about-text">
-        <p>Olá, sou <strong>Charles</strong>. Desenvolvedor Full Stack focado em aplicações web modernas.</p>
-        <p>Trabalho com <strong>React</strong>, <strong>Node.js</strong>, <strong>Fastify</strong>, <strong>PostgreSQL</strong>, <strong>Docker</strong> e automações para empresas e comunidades Discord.</p>
-        <p>Crio desde APIs RESTful completas até bots multifuncionais, sempre pensando em performance, escalabilidade e experiência do usuário. Cada projeto é tratado como um produto pronto para produção.</p>
+  <!-- ======= SOBRE ======= -->
+  <section class="section" id="sobre">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="sec-tag">// sobre mim</span>
+        <h2 class="sec-title">Quem eu sou</h2>
       </div>
       <div class="about-grid">
-        <div class="about-item fade-in">
-          <div class="a-icon">🌐</div>
-          <h4>Full Stack</h4>
-          <p>Front-end + back-end + banco</p>
-        </div>
-        <div class="about-item fade-in fade-in-delay-1">
-          <div class="a-icon">⚡</div>
-          <h4>Performance</h4>
-          <p>Código otimizado e escalável</p>
-        </div>
-        <div class="about-item fade-in fade-in-delay-2">
-          <div class="a-icon">🎯</div>
-          <h4>Foco em resultado</h4>
-          <p>Produto pronto para uso real</p>
-        </div>
-        <div class="about-item fade-in fade-in-delay-3">
-          <div class="a-icon">🤝</div>
-          <h4>Comunicação</h4>
-          <p>Claro e direto com o cliente</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="projetos">
-    <h2>Projetos</h2>
-    <p class="subtitle">Alguns trabalhos que desenvolvi</p>
-
-    <div class="projects-grid">
-      <div class="project-card fade-in">
-        <div class="screenshot sshot-agenda">📅</div>
-        <div class="body">
-          <h3>Sistema de Agendamento</h3>
-          <p>Plataforma completa de agendamentos com dashboard do usuário, painel admin, autenticação JWT, upload de avatar e documentação Swagger.</p>
-          <div class="tags">
-            <span>React</span><span>Fastify</span><span>Prisma</span><span>SQLite</span><span>TailwindCSS</span>
-          </div>
-          <div class="linkss">
-            <a href="https://agendamento-app-861.netlify.app" target="_blank">🔗 Live</a>
-            <a href="https://github.com/devkroz/agendamento" target="_blank">🐙 GitHub</a>
+        <div class="about-text reveal">
+          <p>
+            Sou o <strong>Charles (Kroz)</strong>, desenvolvedor <strong>Full Stack</strong> que transforma
+            ideias em produtos prontos para produção.
+          </p>
+          <p>
+            Trabalho com <strong>React</strong>, <strong>Node.js</strong>, <strong>Fastify</strong>,
+            <strong>PostgreSQL</strong>, <strong>Docker</strong>, <strong>Redis</strong> e automações
+            para empresas e comunidades — incluindo bots robustos para Discord e sistemas em tempo real.
+          </p>
+          <p>
+            Cada projeto é tratado como um produto: pensado para <strong>performance</strong>,
+            <strong>escalabilidade</strong> e <strong>experiência do usuário</strong>.
+          </p>
+          <div class="about-cta">
+            <a href="#contato" class="btn btn-outline">Fale comigo</a>
           </div>
         </div>
-      </div>
-
-      <div class="project-card fade-in fade-in-delay-1">
-        <div class="screenshot sshot-lobao">🐺</div>
-        <div class="body">
-          <h3>Lobão Bot</h3>
-          <p>Bot multifuncional para Discord com economia, tickets, lembretes, moderação, giveaways, sistema de cargos e integração com Mercado Pago. Mais de 6.2k linhas.</p>
-          <div class="tags">
-            <span>Python</span><span>discord.py</span><span>MongoDB</span><span>FastAPI</span>
+        <div class="about-cards reveal">
+          <div class="acard">
+            <div class="acard-icon">🌐</div>
+            <h4>Full Stack</h4>
+            <p>Front-end + back-end + banco de dados</p>
           </div>
-          <div class="linkss">
-            <a href="https://github.com/Rede-Meia-Noite/Lobao" target="_blank">🐙 GitHub</a>
+          <div class="acard">
+            <div class="acard-icon">⚡</div>
+            <h4>Performance</h4>
+            <p>Código otimizado e escalável</p>
           </div>
-        </div>
-      </div>
-
-      <div class="project-card fade-in fade-in-delay-2">
-        <div class="screenshot sshot-ecommerce">🛒</div>
-        <div class="body">
-          <h3>E-Commerce API</h3>
-          <p>API RESTful completa para e-commerce com autenticação JWT, catálogo de produtos, carrinho de compras, checkout com validação de estoque e gestão de pedidos.</p>
-          <div class="tags">
-            <span>Node.js</span><span>Express</span><span>Prisma</span><span>SQLite</span><span>JWT</span>
+          <div class="acard">
+            <div class="acard-icon">🎯</div>
+            <h4>Foco em resultado</h4>
+            <p>Produto pronto para uso real</p>
           </div>
-          <div class="linkss">
-            <a href="https://mountains-geological-linked-consultation.trycloudflare.com/api/products" target="_blank">🔗 Live</a>
-            <a href="https://github.com/devkroz/ecommerce-api" target="_blank">🐙 GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card fade-in fade-in-delay-3">
-        <div class="screenshot sshot-analytics">📊</div>
-        <div class="body">
-          <h3>Analytics Dashboard</h3>
-          <p>Dashboard interativo para visualização de métricas em tempo real com gráficos dinâmicos, filtros avançados e exportação de relatórios em PDF.</p>
-          <div class="tags">
-            <span>Next.js</span><span>Chart.js</span><span>PostgreSQL</span><span>Docker</span>
-          </div>
-          <div class="linkss">
-            <a href="#" target="_blank">🐙 GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card fade-in fade-in-delay-4">
-        <div class="screenshot sshot-ia">🤖</div>
-        <div class="body">
-          <h3>Assistente IA</h3>
-          <p>Chatbot inteligente com processamento de linguagem natural, integração com APIs externas e suporte a múltiplos canais (web, WhatsApp e Discord).</p>
-          <div class="tags">
-            <span>Python</span><span>FastAPI</span><span>OpenAI</span><span>WebSocket</span>
-          </div>
-          <div class="linkss">
-            <a href="#" target="_blank">🐙 GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card fade-in fade-in-delay-4">
-        <div class="screenshot sshot-game">🎮</div>
-        <div class="body">
-          <h3>Game Leaderboard</h3>
-          <p>Sistema de leaderboard para competições multiplayer com ranking em tempo real via WebSocket, achievements e perfil de jogador com estatísticas.</p>
-          <div class="tags">
-            <span>React</span><span>Socket.io</span><span>Redis</span><span>TypeScript</span>
-          </div>
-          <div class="linkss">
-            <a href="https://closed-ways-dollar-grants.trycloudflare.com" target="_blank">🔗 Live</a>
-            <a href="https://github.com/devkroz/game-leaderboard" target="_blank">🐙 GitHub</a>
+          <div class="acard">
+            <div class="acard-icon">🤝</div>
+            <h4>Comunicação</h4>
+            <p>Claro e direto com o cliente</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <p class="subtitle">Soluções que posso oferecer para você ou sua empresa</p>
+  <!-- ======= STACK ======= -->
+  <section class="section alt" id="stack">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// stack</span>
+        <h2 class="sec-title">Tecnologias</h2>
+        <p>Ferramentas que domino no dia a dia.</p>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-cat reveal">
+          <h3>Front-end</h3>
+          <div class="stack-chips">
+            <span>HTML5</span><span>CSS3</span><span>SCSS</span><span>Tailwind CSS</span><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>Vite</span>
+          </div>
+        </div>
+        <div class="stack-cat reveal">
+          <h3>Back-end</h3>
+          <div class="stack-chips">
+            <span>Node.js</span><span>Fastify</span><span>Express</span><span>Python</span><span>FastAPI</span><span>Prisma</span><span>Socket.io</span>
+          </div>
+        </div>
+        <div class="stack-cat reveal">
+          <h3>Dados &amp; Infra</h3>
+          <div class="stack-chips">
+            <span>PostgreSQL</span><span>SQLite</span><span>MongoDB</span><span>Redis</span><span>Docker</span><span>Git</span><span>GitHub Actions</span>
+          </div>
+        </div>
+      </div>
 
-    <div class="services-grid">
-      <div class="service-card fade-in">
-        <div class="s-icon">🌐</div>
-        <h3>Desenvolvimento Web</h3>
-        <p>Sites institucionais, landing pages, dashboards e sistemas web completos criados do zero com as melhores práticas.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-1">
-        <div class="s-icon">🤖</div>
-        <h3>Bots para Discord</h3>
-        <p>Bots personalizados com economia, moderação, tickets, sistema de cargos, lembretes e integrações externas.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-2">
-        <div class="s-icon">📱</div>
-        <h3>APIs RESTful</h3>
-        <p>APIs escaláveis, seguras e bem documentadas para alimentar qualquer aplicação — do mobile ao enterprise.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-3">
-        <div class="s-icon">⚙️</div>
-        <h3>Automação</h3>
-        <p>Scripts e sistemas para automatizar tarefas repetitivas, integrações entre plataformas e fluxos de trabalho.</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-4">
-        <div class="s-icon">💾</div>
-        <h3>Banco de Dados</h3>
-        <p>Modelagem, otimização de queries e migração de bancos SQL (PostgreSQL, SQLite) e NoSQL (MongoDB, Redis).</p>
-      </div>
-      <div class="service-card fade-in fade-in-delay-4">
-        <div class="s-icon">☁️</div>
-        <h3>Deploy & DevOps</h3>
-        <p>Colocação de sistemas no ar com Docker, Cloudflare, Netlify, Railway e configuração de domínios personalizados.</p>
+      <div class="skills reveal">
+        <h3>Nível de habilidade</h3>
+        <div class="skills-list">
+          <div class="skill">
+            <div class="skill-top"><span>Front-end (React / JS)</span><span>85%</span></div>
+            <div class="bar"><div class="fill" data-w="85"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>Back-end (Node / Python)</span><span>90%</span></div>
+            <div class="bar"><div class="fill" data-w="90"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>Banco de dados</span><span>80%</span></div>
+            <div class="bar"><div class="fill" data-w="80"></div></div>
+          </div>
+          <div class="skill">
+            <div class="skill-top"><span>DevOps & Deploy</span><span>75%</span></div>
+            <div class="bar"><div class="fill" data-w="75"></div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <p class="subtitle">Vamos trabalhar juntos?</p>
-
-    <div class="contact-links">
-      <a href="mailto:devkroz0@gmail.com" class="contact-card fade-in">
-        <span class="c-icon">📧</span>
-        <div class="c-body">
-          <div class="c-label">Email</div>
-          devkroz0@gmail.com
-        </div>
-      </a>
-      <a href="https://discord.com/users/kroz.py" target="_blank" class="contact-card fade-in fade-in-delay-1">
-        <span class="c-icon">💬</span>
-        <div class="c-body">
-          <div class="c-label">Discord</div>
-          kroz.py
-        </div>
-      </a>
-      <a href="https://wa.me/5521990455014" target="_blank" class="contact-card fade-in fade-in-delay-2">
-        <span class="c-icon">📱</span>
-        <div class="c-body">
-          <div class="c-label">WhatsApp</div>
-          +55 21 99045-5014
-        </div>
-      </a>
-      <a href="https://github.com/devkroz" target="_blank" class="contact-card fade-in fade-in-delay-3">
-        <span class="c-icon">🐙</span>
-        <div class="c-body">
-          <div class="c-label">GitHub</div>
-          /devkroz
-        </div>
-      </a>
-      <a href="https://linkedin.com/in/charles-wagner-68549b424/" target="_blank" class="contact-card fade-in fade-in-delay-4">
-        <span class="c-icon">🔗</span>
-        <div class="c-body">
-          <div class="c-label">LinkedIn</div>
-          /in/charles-wagner-68549b424/
-        </div>
-      </a>
+  <!-- ======= PROJETOS ======= -->
+  <section class="section" id="projetos">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// projetos</span>
+        <h2 class="sec-title">Trabalhos desenvolvidos</h2>
+        <p>Alguns projetos que tirei do papel.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
     </div>
   </section>
 
-  <footer>
-    © 2026 Kroz • Feito do zero com dedicação
+  <!-- ======= SERVICOS ======= -->
+  <section class="section alt" id="servicos">
+    <div class="container">
+      <div class="sec-head reveal">
+        <span class="eyebrow">// serviços</span>
+        <h2 class="sec-title">O que posso fazer</h2>
+      </div>
+      <div class="services-grid">
+        <div class="svc reveal"><div class="svc-icon">🌐</div><h3>Desenvolvimento Web</h3><p>Sites, landing pages, dashboards e sistemas completos feitos com boas práticas.</p></div>
+        <div class="svc reveal"><div class="svc-icon">🤖</div><h3>Bots para Discord</h3><p>Bots com economia, moderação, tickets, cargos, lembretes e integrações.</p></div>
+        <div class="svc reveal"><div class="svc-icon">📡</div><h3>APIs REST & WebSocket</h3><p>Back-ends escaláveis, seguros e documentados para qualquer aplicação.</p></div>
+        <div class="svc reveal"><div class="svc-icon">⚙️</div><h3>Automação</h3><p>Scripts e fluxos para automatizar tarefas repetitivas e integrações.</p></div>
+        <div class="svc reveal"><div class="svc-icon">💾</div><h3>Banco de Dados</h3><p>Modelagem, otimização e migração de SQL e NoSQL.</p></div>
+        <div class="svc reveal"><div class="svc-icon">☁️</div><h3>Deploy & DevOps</h3><p>Docker, Cloudflare, Netlify, Railway e domínios personalizados.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CONTATO ======= -->
+  <section class="section" id="contato">
+    <div class="container">
+      <div class="sec-head reveal center">
+        <span class="eyebrow">// contato</span>
+        <h2 class="sec-title">Vamos trabalhar juntos?</h2>
+        <p>Disponível para novos projetos e colaborações.</p>
+      </div>
+      <div class="contact-grid" id="contactGrid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>© 2026 <strong>Kroz</strong>.</span>
+      <span>Feito do zero com ❤️</span>
+      <a data-foot-link href="#" class="back-top">↑ topo</a>
+    </div>
   </footer>
 
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
+  <!-- floating terminal -->
+  <div class="term" id="term" aria-hidden="true">
+    <div class="term-head"><span class="t-dot"></span><span class="t-dot"></span><span class="t-dot"></span><span class="t-title">kroz@dev:~</span></div>
+    <div class="term-body"><span class="t-prompt">➜</span> <span id="termLine">npm run dev -- --port 3000</span></div>
+  </div>
 
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-  </script>
-
+  <script src="js/main.js"></script>
 </body>
 </html>
