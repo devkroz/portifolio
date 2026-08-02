@@ -59,12 +59,21 @@
     },
   ];
 
+  /* ---------- ícones SVG de marcas ---------- */
+  const BRANDS = {
+    github: { fill: "#e4e4e7", svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.8.1-.8.1-.8 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.9 4 17.9 4.3 17.9 4.3c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6a11.5 11.5 0 0 0 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"/></svg>` },
+    linkedin: { fill: "#0a66c2", svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2ZM8 19H5v-9h3v9ZM6.5 8.6A1.8 1.8 0 1 1 8.3 6.8a1.8 1.8 0 0 1-1.8 1.8ZM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6s-1.8 1.2-1.8 2.5V19h-3v-9h2.9v1.2a3.2 3.2 0 0 1 2.8-1.6c3 0 3.6 2 3.6 4.6V19Z"/></svg>` },
+    discord: { fill: "#5865F2", svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.6 1.25a18.3 18.3 0 0 0-5.5 0 12.6 12.6 0 0 0-.61-1.25.08.08 0 0 0-.08-.04 19.7 19.7 0 0 0-4.88 1.52.07.07 0 0 0-.04.03C1.15 8.9.6 13.3.84 17.7a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.02.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.22-2a.08.08 0 0 0-.04-.11 13.2 13.2 0 0 1-1.86-.9.08.08 0 0 1-.01-.12c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.03c3.9 1.78 8.12 1.78 11.96 0a.07.07 0 0 1 .08.03c.12.1.25.2.37.3a.08.08 0 0 1 0 .12c-.6.35-1.22.65-1.87.9a.08.08 0 0 0-.04.11c.36.7.77 1.37 1.22 2a.08.08 0 0 0 .08.03 19.8 19.8 0 0 0 3.02-2.02.08.08 0 0 0 .03-.06c.28-5-.87-9.3-3.7-13.25a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.22 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.96 0c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.22 0 2.18 1.1 2.16 2.42 0 1.33-.94 2.42-2.16 2.42Z"/></svg>` },
+    whatsapp: { fill: "#25D366", svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.86-2.03-.96a.7.7 0 0 0-.26-.05c-.11 0-.25.05-.38.15-.72.8-1.33 1.34-1.36 1.38-.13.14-.27.17-.48.06-.58-.29-1.9-1.16-2.88-2.38-.21-.3-.13-.45-.02-.59l.45-.52a2 2 0 0 0 .2-.32c.08-.16.08-.3.04-.44-.04-.14-.35-1.94-.54-2.56-.12-.4-.29-.4-.6-.4H9.75c-.23 0-.6.08-.82.4-.22.3-1 .98-1 2.4 0 1.44 1.02 2.83 1.16 3.02.13.2 2.02 3.2 5.02 4.39 2 .82 2.5.66 2.96.62.43-.03 1.36-.55 1.55-1.08.2-.54.2-.99.14-1.08-.06-.08-.22-.16-.48-.31Z"/><path d="M12.04 2.04a9.92 9.92 0 0 1 10 22.15 3.6 3.6 0 0 0-2.93-.3 9.99 9.99 0 1 0-7.07 0 3.6 3.6 0 0 0-2.93.3 9.92 9.92 0 0 1 2.93-22.15Z"/></svg>` },
+    email: { fill: "#EA4335", svg: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>` },
+  };
+
   const contacts = [
-    { label: "Email", value: "devkroz0@gmail.com", icon: "📧", href: "mailto:devkroz0@gmail.com" },
-    { label: "Discord", value: "kroz.py", icon: "💬", href: "https://discord.com/users/kroz.py" },
-    { label: "WhatsApp", value: "+55 21 99045-5014", icon: "📱", href: "https://wa.me/5521990455014" },
-    { label: "GitHub", value: "/devkroz", icon: "🐙", href: "https://github.com/devkroz" },
-    { label: "LinkedIn", value: "/in/charles-wagner", icon: "🔗", href: "https://linkedin.com/in/charles-wagner-68549b424/" },
+    { label: "Email", value: "devkroz0@gmail.com", brand: "email", href: "mailto:devkroz0@gmail.com" },
+    { label: "Discord", value: "kroz.py", brand: "discord", href: "https://discord.com/users/kroz.py" },
+    { label: "WhatsApp", value: "+55 21 99045-5014", brand: "whatsapp", href: "https://wa.me/5521990455014" },
+    { label: "GitHub", value: "/devkroz", brand: "github", href: "https://github.com/devkroz" },
+    { label: "LinkedIn", value: "/in/charles-wagner", brand: "linkedin", href: "https://linkedin.com/in/charles-wagner-68549b424/" },
   ];
 
   /* ---------- render projects ---------- */
@@ -96,16 +105,17 @@
   const cGrid = document.getElementById("contactGrid");
   if (cGrid) {
     cGrid.innerHTML = contacts
-      .map(
-        (c) => `
-        <a class="ccard reveal" href="${c.href}" target="_blank" rel="noopener">
-          <div class="ccard-icon">${c.icon}</div>
+      .map((c) => {
+        const brand = BRANDS[c.brand];
+        return `
+        <a class="ccard reveal" href="${c.href}" target="_blank" rel="noopener" style="${brand.fill ? `--brand:${brand.fill}` : ""}">
+          <div class="ccard-icon">${brand.svg}</div>
           <div class="ccard-body">
             <div class="ccard-label">${c.label}</div>
             <div class="ccard-value">${c.value}</div>
           </div>
-        </a>`
-      )
+        </a>`;
+      })
       .join("");
   }
 

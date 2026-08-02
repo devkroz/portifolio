@@ -223,7 +223,10 @@ a { color: inherit; text-decoration: none; }
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 1rem; margin-top: 2rem; }
 .ccard { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.3rem 1.4rem; display: flex; align-items: center; gap: 0.9rem; transition: all 0.3s; }
 .ccard:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: var(--shadow-sm); }
-.ccard-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--bg); display: grid; place-items: center; font-size: 1.3rem; flex-shrink: 0; }
+.ccard:hover .ccard-icon { color: var(--brand, var(--accent)); border-color: var(--brand, var(--accent)); box-shadow: 0 0 0 4px color-mix(in srgb, var(--brand, var(--accent)) 14%, transparent); }
+.ccard-icon { width: 46px; height: 46px; border-radius: 13px; background: var(--bg); display: grid; place-items: center; flex-shrink: 0; transition: all 0.3s; }
+.ccard-icon svg { width: 22px; height: 22px; color: var(--muted); transition: color 0.3s; }
+.ccard:hover .ccard-icon svg { color: var(--brand, var(--accent)); }
 .ccard-body { overflow: hidden; }
 .ccard-label { font-size: 0.72rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.05em; }
 .ccard-value { font-family: var(--font-mono); font-size: 0.85rem; color: var(--txt); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
