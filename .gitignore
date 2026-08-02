@@ -1,1 +1,15 @@
+# Netlify local
 .netlify/
+
+# Build output
+_site/
+
+# Sistema / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Logs
+*.log
