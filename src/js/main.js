@@ -8,52 +8,52 @@
   const projects = [
     {
       title: "Game Leaderboard",
-      desc: "Sistema de leaderboard para competições multiplayer com ranking em tempo real via WebSocket, achievements e perfil de jogador com estatísticas.",
+      desc: "Placar de líder para competições multiplayer. Ranking ao vivo via WebSocket, conquistas e perfil de jogador com estatísticas.",
       tags: ["React", "Socket.io", "Redis", "TypeScript"],
-      emoji: "🎮",
+      abbr: "GL",
       grad: "grad-5",
       live: "https://closed-ways-dollar-grants.trycloudflare.com",
       github: "https://github.com/devkroz/game-leaderboard",
     },
     {
       title: "Sistema de Agendamento",
-      desc: "Plataforma completa de agendamentos com dashboard do usuário, painel admin, autenticação JWT, upload de avatar e documentação Swagger.",
+      desc: "Agendamentos com painel do usuário e admin, login com JWT, upload de avatar e docs Swagger.",
       tags: ["React", "Fastify", "Prisma", "SQLite", "TailwindCSS"],
-      emoji: "📅",
+      abbr: "SA",
       grad: "grad-0",
       lives: ["https://agendamento-app-861.netlify.app"],
       github: "https://github.com/devkroz/agendamento",
     },
     {
       title: "Lobão Bot",
-      desc: "Bot multifuncional para Discord com economia, tickets, lembretes, moderação, giveaways, sistema de cargos e integração com Mercado Pago. Mais de 6.2k linhas.",
+      desc: "Bot para Discord com economia, tickets, lembretes, moderação, giveaways, cargos e Mercado Pago. Mais de 6k linhas.",
       tags: ["Python", "discord.py", "MongoDB", "FastAPI"],
-      emoji: "🐺",
+      abbr: "LB",
       grad: "grad-1",
       github: "https://github.com/Rede-Meia-Noite/Lobao",
     },
     {
       title: "E-Commerce API",
-      desc: "API RESTful completa para e-commerce com autenticação JWT, catálogo de produtos, carrinho de compras, checkout com validação de estoque e gestão de pedidos.",
+      desc: "API REST para e-commerce. JWT, catálogo, carrinho, checkout com baixa de estoque e gestão de pedidos.",
       tags: ["Node.js", "Express", "Prisma", "SQLite", "JWT"],
-      emoji: "🛒",
+      abbr: "EC",
       grad: "grad-2",
       lives: ["https://mountains-geological-linked-consultation.trycloudflare.com/api/products"],
       github: "https://github.com/devkroz/ecommerce-api",
     },
     {
       title: "Analytics Dashboard",
-      desc: "Dashboard interativo para visualização de métricas em tempo real com gráficos dinâmicos, filtros avançados e exportação de relatórios em PDF.",
+      desc: "Painel de métricas em tempo real, gráficos, filtros e exportação em PDF. Projeto em andamento.",
       tags: ["Next.js", "Chart.js", "PostgreSQL", "Docker"],
-      emoji: "📊",
+      abbr: "AD",
       grad: "grad-3",
       github: "#",
     },
     {
       title: "Assistente IA",
-      desc: "Chatbot inteligente com processamento de linguagem natural, integração com APIs externas e suporte a múltiplos canais (web, WhatsApp e Discord).",
+      desc: "Chatbot com NLP, integração com APIs externas e canais web, WhatsApp e Discord. Projeto em andamento.",
       tags: ["Python", "FastAPI", "OpenAI", "WebSocket"],
-      emoji: "🤖",
+      abbr: "AI",
       grad: "grad-4",
       github: "#",
     },
@@ -85,15 +85,15 @@
         <article class="pcard reveal" data-delay="${(i % 3) + 1}">
           <div class="pcard-art">
             <div class="pcard-art-grad ${p.grad}"></div>
-            <span class="pcard-art-emoji">${p.emoji}</span>
+            <span class="pcard-art-emoji">${p.abbr}</span>
           </div>
           <div class="pcard-body">
             <h3>${p.title}</h3>
             <p>${p.desc}</p>
             <div class="pcard-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
             <div class="pcard-links">
-              ${(p.lives || (p.live ? [p.live] : [])).map((l) => `<a href="${l}" target="_blank" rel="noopener">🔗 Live</a>`).join("")}
-              ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">🐙 GitHub</a>` : ""}
+              ${(p.lives || (p.live ? [p.live] : [])).map((l) => `<a href="${l}" target="_blank" rel="noopener">Ver ao vivo</a>`).join("")}
+              ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">Codigo</a>` : ""}
             </div>
           </div>
         </article>`
@@ -224,7 +224,7 @@
   const term = document.getElementById("term");
   const lines = [
     "npm run dev -- --port 3000",
-    "deploy --prod ✅",
+    "deploy --prod",
     "git push origin main",
     "pip install -r req.txt",
     "docker compose up -d",
