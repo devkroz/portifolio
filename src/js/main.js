@@ -63,7 +63,7 @@
       tags: ["Python", "Cibersegurança", "CSPRNG"],
       abbr: "🔐",
       grad: "grad-0",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/password-manager",
     },
     {
       title: "Port Scanner",
@@ -71,7 +71,7 @@
       tags: ["Python", "Cibersegurança", "Redes"],
       abbr: "🔎",
       grad: "grad-1",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/port-scanner",
     },
     {
       title: "Hash Tool",
@@ -79,7 +79,7 @@
       tags: ["Python", "Cibersegurança", "Criptografia"],
       abbr: "🧮",
       grad: "grad-2",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/hash-detector",
     },
     {
       title: "AES Crypto",
@@ -87,7 +87,7 @@
       tags: ["Python", "Cibersegurança", "AES-256"],
       abbr: "🔒",
       grad: "grad-3",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/aes-crypto",
     },
     {
       title: "Header Analyzer",
@@ -95,7 +95,7 @@
       tags: ["Python", "Cibersegurança", "Web"],
       abbr: "🛡️",
       grad: "grad-4",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/http-headers-analyzer",
     },
     {
       title: "Wordlist Generator",
@@ -103,7 +103,7 @@
       tags: ["Python", "Cibersegurança", "Pentest"],
       abbr: "📝",
       grad: "grad-5",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/wordlist-generator",
     },
     {
       title: "Breach Checker",
@@ -111,7 +111,7 @@
       tags: ["Python", "Cibersegurança", "Privacidade"],
       abbr: "🚨",
       grad: "grad-0",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/breach-checker",
     },
     {
       title: "Keylogger Edu",
@@ -119,7 +119,7 @@
       tags: ["Python", "Cibersegurança", "Educacional"],
       abbr: "⌨️",
       grad: "grad-1",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/keylogger-edu",
     },
     {
       title: "Packet Sniffer",
@@ -127,7 +127,7 @@
       tags: ["Python", "Cibersegurança", "Redes"],
       abbr: "📡",
       grad: "grad-2",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/packet-sniffer",
     },
     {
       title: "Data Anonymizer",
@@ -135,7 +135,7 @@
       tags: ["Python", "Cibersegurança", "LGPD"],
       abbr: "🕵️",
       grad: "grad-3",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/data-anonymizer",
     },
     {
       title: "TaskFlow API",
@@ -151,7 +151,7 @@
       tags: ["React", "Node.js", "MongoDB", "WebSocket"],
       abbr: "🍰",
       grad: "grad-5",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/ifood-lize",
     },
     {
       title: "GUIEngine",
@@ -167,7 +167,7 @@
       tags: ["Python", "discord.py", "SQLite", "PIX"],
       abbr: "🛍️",
       grad: "grad-1",
-      github: "https://github.com/devkroz",
+      github: "https://github.com/devkroz/discord-sales-bot",
     },
     {
       title: "LightWelcome",
