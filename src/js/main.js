@@ -7,55 +7,135 @@
   /* ---------- dados dos projetos ---------- */
   const projects = [
     {
-      title: "Game Leaderboard",
-      desc: "Placar de líder para competições multiplayer. Ranking ao vivo via WebSocket, conquistas e perfil de jogador com estatísticas.",
-      tags: ["React", "Socket.io", "Redis", "TypeScript"],
-      abbr: "GL",
-      grad: "grad-5",
-      live: "https://closed-ways-dollar-grants.trycloudflare.com",
-      github: "https://github.com/devkroz/game-leaderboard",
+      title: "Lobão Bot",
+      desc: "Bot Discord multifuncional presente em 10k+ servidores. Economia, moderação, tickets com IA (Mistral), giveaways, roleplay e mais. Multi-shard com watchdog automático.",
+      tags: ["Python", "discord.py", "MongoDB", "Mistral AI", "Redis"],
+      abbr: "🐺",
+      grad: "grad-1",
+      github: "https://github.com/Rede-Meia-Noite/Lobao",
+      badge: "10k+ servers",
     },
     {
       title: "Sistema de Agendamento",
-      desc: "Agendamentos com painel do usuário e admin, login com JWT, upload de avatar e docs Swagger.",
+      desc: "Aplicação full stack de agendamento com painel admin, login JWT, upload de avatar, documentação Swagger e deploy no Netlify.",
       tags: ["React", "Fastify", "Prisma", "SQLite", "TailwindCSS"],
-      abbr: "SA",
+      abbr: "📅",
       grad: "grad-0",
       lives: ["https://agendamento-app-861.netlify.app"],
       github: "https://github.com/devkroz/agendamento",
     },
     {
-      title: "Lobão Bot",
-      desc: "Bot para Discord com economia, tickets, lembretes, moderação, giveaways, cargos e Mercado Pago. Mais de 6k linhas.",
-      tags: ["Python", "discord.py", "MongoDB", "FastAPI"],
-      abbr: "LB",
-      grad: "grad-1",
-      github: "https://github.com/Rede-Meia-Noite/Lobao",
-    },
-    {
       title: "E-Commerce API",
-      desc: "API REST para e-commerce. JWT, catálogo, carrinho, checkout com baixa de estoque e gestão de pedidos.",
+      desc: "API REST completa para e-commerce. JWT, catálogo, carrinho, checkout com baixa de estoque, gestão de pedidos e rotas admin.",
       tags: ["Node.js", "Express", "Prisma", "SQLite", "JWT"],
-      abbr: "EC",
+      abbr: "🛒",
       grad: "grad-2",
       lives: ["https://mountains-geological-linked-consultation.trycloudflare.com/api/products"],
       github: "https://github.com/devkroz/ecommerce-api",
     },
     {
-      title: "Analytics Dashboard",
-      desc: "Painel de métricas em tempo real, gráficos, filtros e exportação em PDF. Projeto em andamento.",
-      tags: ["Next.js", "Chart.js", "PostgreSQL", "Docker"],
-      abbr: "AD",
-      grad: "grad-3",
-      github: "#",
+      title: "Game Leaderboard",
+      desc: "Sistema de ranking em tempo real via WebSocket. Achievements, perfil de jogador com estatísticas e simulação de partidas ao vivo.",
+      tags: ["React", "TypeScript", "Socket.io", "Redis"],
+      abbr: "🏆",
+      grad: "grad-5",
+      github: "https://github.com/devkroz/game-leaderboard",
     },
     {
-      title: "Assistente IA",
-      desc: "Chatbot com NLP, integração com APIs externas e canais web, WhatsApp e Discord. Projeto em andamento.",
-      tags: ["Python", "FastAPI", "OpenAI", "WebSocket"],
-      abbr: "AI",
+      title: "Discord Bank Bot",
+      desc: "Bot de economia para Discord com sistema bancário completo: depósitos, saques, transferências, juros e rankings.",
+      tags: ["Python", "discord.py", "MongoDB"],
+      abbr: "🏦",
+      grad: "grad-3",
+      github: "https://github.com/devkroz/discord-bank-bot",
+    },
+    {
+      title: "Jogo da Cobrinha",
+      desc: "Clássico Snake Game em Python com Pygame. Aumenta velocidade a cada comida, pontuação e game over.",
+      tags: ["Python", "Pygame"],
+      abbr: "🐍",
       grad: "grad-4",
-      github: "#",
+      github: "https://github.com/devkroz/jogo-cobrinha",
+    },
+    {
+      title: "Password Manager",
+      desc: "Gera senhas seguras com CSPRNG, valida força, calcula entropia em bits e cria passphrases memoráveis. 100% offline.",
+      tags: ["Python", "Cibersegurança", "CSPRNG"],
+      abbr: "🔐",
+      grad: "grad-0",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Port Scanner",
+      desc: "Scanner de portas TCP multithread com banner grabbing, fingerprinting de serviços e saída em JSON. Para testes autorizados.",
+      tags: ["Python", "Cibersegurança", "Redes"],
+      abbr: "🔎",
+      grad: "grad-1",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Hash Tool",
+      desc: "Identifica MD5/SHA1/SHA256, gera hashes e faz ataque de dicionário + brute force em texto e arquivos.",
+      tags: ["Python", "Cibersegurança", "Criptografia"],
+      abbr: "🧮",
+      grad: "grad-2",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "AES Crypto",
+      desc: "Criptografa e descriptografa texto e arquivos com AES-256-CBC e derivação de chave via PBKDF2.",
+      tags: ["Python", "Cibersegurança", "AES-256"],
+      abbr: "🔒",
+      grad: "grad-3",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Header Analyzer",
+      desc: "Audita headers de segurança HTTP (HSTS, CSP, X-Frame-Options) e gera nota de segurança de A+ a F.",
+      tags: ["Python", "Cibersegurança", "Web"],
+      abbr: "🛡️",
+      grad: "grad-4",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Wordlist Generator",
+      desc: "Gera wordlists com mutações, leetspeak, capitalização, datas e padrões personalizados para testes de força bruta autorizados.",
+      tags: ["Python", "Cibersegurança", "Pentest"],
+      abbr: "📝",
+      grad: "grad-5",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Breach Checker",
+      desc: "Verifica vazamentos de senha via HaveIBeenPwned usando k-anonimato — a senha nunca é enviada para a API.",
+      tags: ["Python", "Cibersegurança", "Privacidade"],
+      abbr: "🚨",
+      grad: "grad-0",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Keylogger Edu",
+      desc: "Keylogger educacional com timestamps, rastreamento de janela ativa e simulação de captura. Uso apenas em sistemas próprios.",
+      tags: ["Python", "Cibersegurança", "Educacional"],
+      abbr: "⌨️",
+      grad: "grad-1",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Packet Sniffer",
+      desc: "Sniffer de pacotes com raw sockets: parse de TCP/UDP/ICMP/DNS/HTTP e filtros por protocolo, porta e host.",
+      tags: ["Python", "Cibersegurança", "Redes"],
+      abbr: "📡",
+      grad: "grad-2",
+      github: "https://github.com/devkroz",
+    },
+    {
+      title: "Data Anonymizer",
+      desc: "Anonimizador de dados pessoais (LGPD): gera CPF/CNPJ/RG/PIX/cartão válidos e mascara/hasheia dados sensíveis.",
+      tags: ["Python", "Cibersegurança", "LGPD"],
+      abbr: "🕵️",
+      grad: "grad-3",
+      github: "https://github.com/devkroz",
     },
   ];
 
@@ -86,14 +166,15 @@
           <div class="pcard-art">
             <div class="pcard-art-grad ${p.grad}"></div>
             <span class="pcard-art-emoji">${p.abbr}</span>
+            ${p.badge ? `<span class="pcard-badge">🔥 ${p.badge}</span>` : ""}
           </div>
           <div class="pcard-body">
             <h3>${p.title}</h3>
             <p>${p.desc}</p>
             <div class="pcard-tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
             <div class="pcard-links">
-              ${(p.lives || (p.live ? [p.live] : [])).map((l) => `<a href="${l}" target="_blank" rel="noopener">Ver ao vivo</a>`).join("")}
-              ${p.github ? `<a href="${p.github}" target="_blank" rel="noopener">Codigo</a>` : ""}
+              ${(p.lives || (p.live ? [p.live] : [])).map((l) => `<a href="${l}" target="_blank" rel="noopener">Ver ao vivo ↗</a>`).join("")}
+              ${p.github && p.github !== "#" ? `<a href="${p.github}" target="_blank" rel="noopener">Código ↗</a>` : ""}
             </div>
           </div>
         </article>`
