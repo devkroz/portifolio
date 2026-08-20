@@ -193,6 +193,7 @@ a { color: inherit; text-decoration: none; }
 .pcard-art-grad { position: absolute; inset: 0; opacity: 0.9; transition: transform 0.5s; }
 .pcard:hover .pcard-art-grad { transform: scale(1.08); }
 .pcard-art-emoji { position: relative; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4)); transition: transform 0.4s; }
+.pcard-art-emoji svg { width: 62px; height: 62px; }
 .pcard:hover .pcard-art-emoji { transform: translateY(-6px) scale(1.1); }
 .pcard-body { padding: 1.5rem; display: flex; flex-direction: column; flex: 1; }
 .pcard-body h3 { font-family: var(--font-title); font-size: 1.1rem; margin-bottom: 0.5rem; }
